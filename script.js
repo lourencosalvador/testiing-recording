@@ -89,8 +89,22 @@ const handleStream = (stream) => {
   pause.classList.remove('d-none');
   screenshot.classList.remove('d-none');
   streamStarted = true;
+
+  setTimeout(() => {
+    stopStream();
+    startStream(constraints);
+  }, 20000);
 };
 
-
+const stopStream = () => {
+    if (video.srcObject) {
+      const stream = video.srcObject;
+      const tracks = stream.getTracks();
+  
+      tracks.forEach(track => track.stop());
+      video.srcObject = null;
+      streamStarted = false;
+    }
+  };
 
 getCameraSelection();
