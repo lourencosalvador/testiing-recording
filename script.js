@@ -18,9 +18,6 @@ const constraints = {
     height: {
       ideal: 1080,
     },
-    facingMode: {
-        exact: 'environment'
-      }
   }
 };
 
